@@ -1,0 +1,9 @@
+export { Header } from "./Header";
+export { Hero } from "./Hero";
+export { Features } from "./Features";
+export { Roadmap } from "./Roadmap";
+export { Pricing } from "./Pricing";
+export { Trust } from "./Trust";
+export { FAQ } from "./FAQ";
+export { CTA } from "./CTA";
+export { Footer } from "./Footer";
