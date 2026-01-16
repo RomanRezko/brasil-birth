@@ -7,38 +7,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const faqs = [
-  {
-    question: "Какая виза нужна для родов в Бразилии?",
-    answer:
-      "Для граждан России виза не требуется для пребывания до 90 дней. Этого достаточно для родов и оформления документов. Если вы планируете остаться дольше, мы поможем с продлением или оформлением ВНЖ сразу после рождения ребенка.",
-  },
-  {
-    question: "Нужно ли знать португальский язык?",
-    answer:
-      "Нет, знание языка не требуется. Мы предоставляем русскоязычного куратора, который будет с вами на всех этапах. На родах присутствует профессиональный переводчик. В госпиталях премиум-класса персонал владеет английским языком.",
-  },
-  {
-    question: "Сколько стоит перелет и когда лучше лететь?",
-    answer:
-      "Перелет из Москвы в Рио или Сан-Паулу стоит от $800 до $2000 в зависимости от класса и сезона. Рекомендуем прилетать на 30-32 неделе беременности. Большинство авиакомпаний разрешают перелет до 36 недели при наличии справки от врача.",
-  },
-  {
-    question: "Сколько времени занимает оформление паспорта?",
-    answer:
-      "Бразильский паспорт для ребенка оформляется за 2-4 недели после получения свидетельства о рождении. Весь процесс от родов до паспорта занимает около 4-6 недель. При необходимости возможно ускоренное оформление.",
-  },
-  {
-    question: "Могут ли родители получить ВНЖ?",
-    answer:
-      "Да, родители ребенка-гражданина Бразилии имеют право на постоянное проживание (ВНЖ). Заявление можно подать сразу после получения свидетельства о рождении. Процесс занимает 2-3 месяца. ВНЖ дает право на работу и социальные льготы.",
-  },
-];
+import { faq } from "@/data/content";
 
 export function FAQ() {
   return (
-    <section className="py-20 md:py-32 bg-white">
+    <section id="faq" className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Section header */}
         <motion.div
@@ -67,13 +40,13 @@ export function FAQ() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
+            {faq.map((item, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
                 <AccordionTrigger className="text-left text-lg">
-                  {faq.question}
+                  {item.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-base leading-relaxed">
-                  {faq.answer}
+                  {item.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}

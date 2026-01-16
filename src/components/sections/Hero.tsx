@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Users } from "lucide-react";
+import { ArrowRight, Download, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { heroContent } from "@/data/content";
 import Image from "next/image";
 
 export function Hero() {
@@ -33,26 +34,27 @@ export function Hero() {
               Роды в Бразилии под ключ
             </motion.span>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary leading-tight mb-6">
-              Гражданство Бразилии для вашего ребенка и{" "}
-              <span className="text-ocean-600">будущее без границ</span>
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-text-primary leading-tight mb-6">
+              {heroContent.title}
             </h1>
 
-            <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0">
-              Полное сопровождение родов: от встречи в аэропорту до получения паспорта.
-              Медицина мирового уровня и океан под окном.
+            <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              {heroContent.subtitle}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
               <Button size="lg" asChild>
                 <a href="#pricing">
-                  Рассчитать стоимость
+                  {heroContent.primaryBtn}
                   <ArrowRight className="w-5 h-5" />
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="#about">Узнать подробнее</a>
+                <a href="#faq">
+                  <Download className="w-5 h-5" />
+                  {heroContent.secondaryBtn}
+                </a>
               </Button>
             </div>
 
@@ -91,13 +93,13 @@ export function Hero() {
                   <span>200+</span>
                 </div>
                 <p className="text-sm text-text-muted">
-                  счастливых семей в 2025 году
+                  счастливых семей в 2024 году
                 </p>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Image placeholder */}
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}

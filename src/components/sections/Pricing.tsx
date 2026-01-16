@@ -1,72 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Star, ArrowRight } from "lucide-react";
+import { Check, X, Star, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-
-const plans = [
-  {
-    name: "Базовый",
-    subtitle: "Документы",
-    price: "от $3,500",
-    description: "Идеально для тех, кто хочет самостоятельно организовать поездку",
-    features: [
-      "Консультация по визе",
-      "Подбор госпиталя и врача",
-      "Оформление всех документов",
-      "Свидетельство о рождении",
-      "CPF ребенка",
-      "Паспорт Бразилии",
-    ],
-    notIncluded: [
-      "Трансфер и встреча",
-      "Личный куратор",
-      "Подбор жилья",
-    ],
-    popular: false,
-    cta: "Выбрать план",
-  },
-  {
-    name: "Комфорт",
-    subtitle: "Сопровождение",
-    price: "от $7,500",
-    description: "Оптимальный баланс цены и комфорта. Выбор большинства семей",
-    features: [
-      "Всё из пакета «Базовый»",
-      "Встреча в аэропорту",
-      "Подбор апартаментов",
-      "Личный русскоязычный куратор",
-      "Сопровождение в госпиталь",
-      "Переводчик на родах",
-      "ВНЖ для родителей",
-      "Поддержка 24/7",
-    ],
-    notIncluded: [],
-    popular: true,
-    cta: "Выбрать план",
-  },
-  {
-    name: "VIP",
-    subtitle: "Всё включено",
-    price: "от $15,000",
-    description: "Премиальный сервис с максимальным комфортом и заботой",
-    features: [
-      "Всё из пакета «Комфорт»",
-      "VIP-палата в госпитале",
-      "Личный водитель",
-      "Премиум апартаменты у океана",
-      "Няня на первые дни",
-      "Экскурсионная программа",
-      "Помощь с перелетом бизнес-класса",
-      "Юридическое сопровождение",
-    ],
-    notIncluded: [],
-    popular: false,
-    cta: "Выбрать план",
-  },
-];
+import { pricing } from "@/data/content";
 
 export function Pricing() {
   return (
@@ -94,7 +33,7 @@ export function Pricing() {
 
         {/* Pricing cards */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {plans.map((plan, index) => (
+          {pricing.map((plan, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -105,12 +44,12 @@ export function Pricing() {
               <Card
                 className={cn(
                   "h-full relative overflow-hidden transition-all duration-300",
-                  plan.popular
+                  plan.isPopular
                     ? "border-ocean-500 border-2 shadow-xl scale-[1.02]"
                     : "border-sand-200 hover:border-ocean-200"
                 )}
               >
-                {plan.popular && (
+                {plan.isPopular && (
                   <div className="absolute top-0 right-0">
                     <div className="bg-ocean-500 text-white text-xs font-semibold px-4 py-1.5 rounded-bl-xl flex items-center gap-1">
                       <Star className="w-3 h-3 fill-current" />
@@ -122,17 +61,12 @@ export function Pricing() {
                 <CardHeader className="pb-4">
                   <div className="mb-2">
                     <span className="text-sm text-ocean-600 font-medium">
-                      {plan.subtitle}
-                    </span>
-                  </div>
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-text-primary">
                       {plan.price}
                     </span>
                   </div>
+                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
                   <p className="text-text-muted text-sm mt-2">
-                    {plan.description}
+                    {plan.slogan}
                   </p>
                 </CardHeader>
 
@@ -140,38 +74,33 @@ export function Pricing() {
                   <ul className="space-y-3 mb-6">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-ocean-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-text-secondary text-sm">
-                          {feature}
+                        {feature.included ? (
+                          <Check className="w-5 h-5 text-ocean-500 flex-shrink-0 mt-0.5" />
+                        ) : (
+                          <X className="w-5 h-5 text-text-muted flex-shrink-0 mt-0.5" />
+                        )}
+                        <span
+                          className={cn(
+                            "text-sm",
+                            feature.included
+                              ? "text-text-secondary"
+                              : "text-text-muted line-through"
+                          )}
+                        >
+                          {feature.text}
                         </span>
                       </li>
                     ))}
                   </ul>
 
-                  {plan.notIncluded.length > 0 && (
-                    <div className="border-t border-sand-200 pt-4 mb-6">
-                      <p className="text-xs text-text-muted mb-2">Не включено:</p>
-                      <ul className="space-y-2">
-                        {plan.notIncluded.map((item, i) => (
-                          <li
-                            key={i}
-                            className="text-text-muted text-sm line-through opacity-60"
-                          >
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
                   <Button
-                    variant={plan.popular ? "default" : "outline"}
+                    variant={plan.isPopular ? "default" : "outline"}
                     className="w-full"
                     size="lg"
                     asChild
                   >
                     <a href="#contact">
-                      {plan.cta}
+                      Выбрать план
                       <ArrowRight className="w-4 h-4" />
                     </a>
                   </Button>
@@ -189,9 +118,11 @@ export function Pricing() {
           transition={{ delay: 0.4 }}
           className="text-center text-text-muted text-sm mt-10"
         >
-          * Стоимость родов в госпитале: от $5,000 до $15,000 в зависимости от выбора клиники и типа палаты.
+          * Бесплатная медицина (SUS) доступна всем. Частные роды стоят от $1500
+          до $5000.
           <br />
-          Проживание: от $2,000/месяц за комфортные апартаменты.
+          Проживание: от $1,500/месяц за комфортные апартаменты в безопасном
+          районе.
         </motion.p>
       </div>
     </section>

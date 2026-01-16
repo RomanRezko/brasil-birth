@@ -1,39 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, Stethoscope, Users, Sun } from "lucide-react";
+import { Globe, Stethoscope, Users, Baby } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { features } from "@/data/content";
 
-const features = [
-  {
-    icon: Globe,
-    title: "Паспорт мира",
-    description:
-      "Бразильский паспорт открывает безвизовый доступ в 170+ стран, включая США, ЕС, Великобританию и Японию.",
-    highlight: "170+ стран",
-  },
-  {
-    icon: Stethoscope,
-    title: "Медицина мирового уровня",
-    description:
-      "Госпитали Бразилии входят в топ-50 мира. Качество как в США, но стоимость в 3-5 раз ниже.",
-    highlight: "Топ-50 мира",
-  },
-  {
-    icon: Users,
-    title: "ВНЖ для всей семьи",
-    description:
-      "Родители ребенка-гражданина Бразилии получают право на постоянное проживание сразу после рождения.",
-    highlight: "Сразу после родов",
-  },
-  {
-    icon: Sun,
-    title: "Климат и комфорт",
-    description:
-      "Теплый климат круглый год, океан, свежие фрукты. Идеальные условия для восстановления после родов.",
-    highlight: "+25°C круглый год",
-  },
-];
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Globe,
+  Stethoscope,
+  Users,
+  Baby,
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -76,7 +53,8 @@ export function Features() {
           </h2>
           <p className="text-lg text-text-secondary">
             Бразилия — одна из немногих стран, где действует право почвы.
-            Ребенок, родившийся на территории страны, автоматически получает гражданство.
+            Ребенок, родившийся на территории страны, автоматически получает
+            гражданство.
           </p>
         </motion.div>
 
@@ -88,32 +66,32 @@ export function Features() {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 gap-6 lg:gap-8"
         >
-          {features.map((feature, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <Card className="h-full border-sand-200 hover:border-ocean-200 transition-colors group">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-5">
-                    <div className="flex-shrink-0 w-14 h-14 bg-ocean-100 rounded-2xl flex items-center justify-center group-hover:bg-ocean-500 transition-colors">
-                      <feature.icon className="w-7 h-7 text-ocean-600 group-hover:text-white transition-colors" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-semibold text-text-primary">
+          {features.map((feature, index) => {
+            const IconComponent = iconMap[feature.icon];
+            return (
+              <motion.div key={index} variants={itemVariants}>
+                <Card className="h-full border-sand-200 hover:border-ocean-200 transition-colors group">
+                  <CardContent className="p-8">
+                    <div className="flex items-start gap-5">
+                      <div className="flex-shrink-0 w-14 h-14 bg-ocean-100 rounded-2xl flex items-center justify-center group-hover:bg-ocean-500 transition-colors">
+                        {IconComponent && (
+                          <IconComponent className="w-7 h-7 text-ocean-600 group-hover:text-white transition-colors" />
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-semibold text-text-primary mb-2">
                           {feature.title}
                         </h3>
-                        <span className="px-2.5 py-1 bg-sand-100 text-ocean-700 rounded-full text-xs font-medium">
-                          {feature.highlight}
-                        </span>
+                        <p className="text-text-secondary leading-relaxed">
+                          {feature.description}
+                        </p>
                       </div>
-                      <p className="text-text-secondary leading-relaxed">
-                        {feature.description}
-                      </p>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
