@@ -11,7 +11,7 @@ import { faq } from "@/data/content";
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-20 md:py-32 bg-white">
+    <section id="faq" className="py-12 md:py-16 bg-white">
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Section header */}
         <motion.div
@@ -19,7 +19,7 @@ export function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <span className="inline-block px-4 py-2 bg-ocean-100 text-ocean-700 rounded-full text-sm font-medium mb-4">
             FAQ

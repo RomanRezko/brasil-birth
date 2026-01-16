@@ -26,7 +26,7 @@ export function CTA() {
   return (
     <section
       id="contact"
-      className="py-20 md:py-32 bg-gradient-to-br from-ocean-600 to-ocean-800 relative overflow-hidden"
+      className="py-12 md:py-16 bg-gradient-to-br from-ocean-600 to-ocean-800 relative overflow-hidden"
     >
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-ocean-500 rounded-full blur-3xl opacity-30" />
@@ -53,9 +53,22 @@ export function CTA() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                variant="whatsapp"
                 size="lg"
-                className="bg-white text-ocean-700 hover:bg-sand-100"
+                className="bg-white text-[#0088CC] hover:bg-sand-100"
+                asChild
+              >
+                <a
+                  href="https://t.me/brazilbaby"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Send className="w-5 h-5" />
+                  Написать в Telegram
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                className="bg-white text-[#25D366] hover:bg-sand-100"
                 asChild
               >
                 <a

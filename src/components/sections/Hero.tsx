@@ -16,20 +16,40 @@ export function Hero() {
 
   if (!mounted) {
     return (
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-0 md:min-h-screen flex items-center pt-20 pb-6 md:pt-20 md:pb-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-sand-50 via-white to-ocean-50" />
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <span className="inline-block px-4 py-2 bg-ocean-100 text-ocean-700 rounded-full text-sm font-medium mb-6">
-                Роды в Бразилии под ключ
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-text-primary leading-tight mb-6">
-                {heroContent.title}
+          <div className="grid grid-cols-2 gap-3 md:gap-6 lg:gap-12 items-center">
+            <div className="text-left">
+              <h1 className="text-[30px] sm:text-3xl md:text-5xl lg:text-[3.5rem] font-bold text-text-primary leading-[1.1] md:leading-tight mb-1 md:mb-4">
+                Роды в <span className="bg-gradient-to-r from-[#FFDF00] to-[#009B3A] bg-clip-text text-transparent">Бразилии</span> под ключ
               </h1>
-              <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-2xl lg:text-[1.75rem] font-medium text-text-secondary leading-tight mb-2 md:mb-6">
+                Гражданство для Вашего ребенка — Будущее без виз
+              </p>
+              {/* Mobile CTA Button */}
+              <div className="md:hidden mt-2">
+                <Button size="sm" asChild>
+                  <a href="#contact">
+                    Оставить заявку
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </Button>
+              </div>
+              <p className="hidden md:block text-base md:text-lg text-text-muted mb-8 max-w-xl leading-relaxed">
                 {heroContent.subtitle}
               </p>
+            </div>
+            <div className="relative">
+              <div className="relative aspect-[4/5] rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg md:shadow-xl lg:shadow-2xl">
+                <Image
+                  src="/images/hero-couple-rio.png"
+                  alt="Счастливая пара в ожидании ребенка на фоне Рио-де-Жанейро"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -38,7 +58,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-0 md:min-h-screen flex items-center pt-20 pb-6 md:pt-20 md:pb-0 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-sand-50 via-white to-ocean-50" />
 
@@ -47,33 +67,48 @@ export function Hero() {
       <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-sand-200 rounded-full blur-3xl opacity-50" />
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-2 gap-3 md:gap-6 lg:gap-12 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center lg:text-left"
+            className="text-left"
           >
-            <motion.span
+            <h1 className="text-[30px] sm:text-3xl md:text-5xl lg:text-[3.5rem] font-bold text-text-primary leading-[1.1] md:leading-tight mb-1 md:mb-4">
+              Роды в <span className="bg-gradient-to-r from-[#FFDF00] to-[#009B3A] bg-clip-text text-transparent">Бразилии</span> под ключ
+            </h1>
+
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-block px-4 py-2 bg-ocean-100 text-ocean-700 rounded-full text-sm font-medium mb-6"
+              className="text-sm sm:text-base md:text-2xl lg:text-[1.75rem] font-medium text-text-secondary leading-tight mb-2 md:mb-6"
             >
-              Роды в Бразилии под ключ
-            </motion.span>
+              Гражданство для Вашего ребенка — Будущее без виз
+            </motion.p>
 
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-text-primary leading-tight mb-6">
-              {heroContent.title}
-            </h1>
+            {/* Mobile CTA Button */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="md:hidden mt-2"
+            >
+              <Button size="sm" asChild>
+                <a href="#contact">
+                  Оставить заявку
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </Button>
+            </motion.div>
 
-            <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="hidden md:block text-base md:text-lg text-text-muted mb-8 max-w-xl leading-relaxed">
               {heroContent.subtitle}
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
+            {/* CTA Buttons - hidden on mobile */}
+            <div className="hidden md:flex flex-col sm:flex-row gap-4 justify-start mb-10">
               <Button size="lg" asChild>
                 <a href="#pricing">
                   {heroContent.primaryBtn}
@@ -88,12 +123,12 @@ export function Hero() {
               </Button>
             </div>
 
-            {/* Social Proof */}
+            {/* Social Proof - hidden on mobile */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="flex items-center gap-4 justify-center lg:justify-start"
+              className="hidden md:flex items-center gap-4 justify-start"
             >
               <div className="flex -space-x-3">
                 {[
@@ -134,12 +169,12 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative hidden lg:block"
+            className="relative"
           >
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-[4/5] rounded-xl md:rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg md:shadow-xl lg:shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&h=1000&fit=crop"
-                alt="Счастливая семья на пляже Бразилии"
+                src="/images/hero-couple-rio.png"
+                alt="Счастливая пара в ожидании ребенка на фоне Рио-де-Жанейро"
                 fill
                 className="object-cover"
                 priority
@@ -147,12 +182,12 @@ export function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-ocean-900/20 to-transparent" />
             </div>
 
-            {/* Floating card */}
+            {/* Floating card - only on desktop */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
-              className="absolute -left-8 bottom-20 bg-white p-4 rounded-2xl shadow-xl"
+              className="absolute -left-8 bottom-20 bg-white p-4 rounded-2xl shadow-xl hidden lg:block"
             >
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center">

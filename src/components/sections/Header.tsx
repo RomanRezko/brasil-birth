@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -62,8 +62,18 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-2">
+            <Button variant="telegram" size="default" asChild>
+              <a
+                href="https://t.me/brazilbaby"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Send className="w-4 h-4" />
+                Telegram
+              </a>
+            </Button>
             <Button variant="whatsapp" size="default" asChild>
               <a
                 href="https://wa.me/5521999999999?text=Здравствуйте! Интересуют роды в Бразилии"
@@ -71,7 +81,7 @@ export function Header() {
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="w-4 h-4" />
-                Написать в WhatsApp
+                WhatsApp
               </a>
             </Button>
           </div>
@@ -111,16 +121,28 @@ export function Header() {
                       {item.label}
                     </a>
                   ))}
-                  <Button variant="whatsapp" size="default" className="mt-2" asChild>
-                    <a
-                      href="https://wa.me/5521999999999?text=Здравствуйте! Интересуют роды в Бразилии"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      Написать в WhatsApp
-                    </a>
-                  </Button>
+                  <div className="flex flex-col gap-2 mt-2">
+                    <Button variant="telegram" size="default" asChild>
+                      <a
+                        href="https://t.me/brazilbaby"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Send className="w-4 h-4" />
+                        Telegram
+                      </a>
+                    </Button>
+                    <Button variant="whatsapp" size="default" asChild>
+                      <a
+                        href="https://wa.me/5521999999999?text=Здравствуйте! Интересуют роды в Бразилии"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <MessageCircle className="w-4 h-4" />
+                        WhatsApp
+                      </a>
+                    </Button>
+                  </div>
                 </nav>
               </motion.div>
             )}

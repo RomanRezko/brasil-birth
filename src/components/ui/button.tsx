@@ -20,6 +20,8 @@ const buttonVariants = cva(
         link: "text-ocean-600 underline-offset-4 hover:underline",
         whatsapp:
           "bg-[#25D366] text-white shadow-md hover:bg-[#20BD5A] hover:shadow-lg active:scale-[0.98]",
+        telegram:
+          "bg-[#0088CC] text-white shadow-md hover:bg-[#0077B5] hover:shadow-lg active:scale-[0.98]",
       },
       size: {
         default: "h-11 px-6 py-2",
