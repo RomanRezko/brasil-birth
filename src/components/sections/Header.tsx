@@ -14,16 +14,23 @@ const navItems = [
 ];
 
 export function Header() {
+  const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [mounted]);
 
   return (
     <header
@@ -84,39 +91,41 @@ export function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden"
-            >
-              <nav className="flex flex-col gap-4 pt-6 pb-4">
-                {navItems.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className="text-text-secondary hover:text-ocean-600 transition-colors font-medium py-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-                <Button variant="whatsapp" size="default" className="mt-2" asChild>
-                  <a
-                    href="https://wa.me/5521999999999?text=Здравствуйте! Интересуют роды в Бразилии"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    Написать в WhatsApp
-                  </a>
-                </Button>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {mounted && (
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden overflow-hidden"
+              >
+                <nav className="flex flex-col gap-4 pt-6 pb-4">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="text-text-secondary hover:text-ocean-600 transition-colors font-medium py-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                  <Button variant="whatsapp" size="default" className="mt-2" asChild>
+                    <a
+                      href="https://wa.me/5521999999999?text=Здравствуйте! Интересуют роды в Бразилии"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      Написать в WhatsApp
+                    </a>
+                  </Button>
+                </nav>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
       </div>
     </header>
   );

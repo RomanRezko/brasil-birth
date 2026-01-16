@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Download, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,35 @@ import { heroContent } from "@/data/content";
 import Image from "next/image";
 
 export function Hero() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-sand-50 via-white to-ocean-50" />
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <span className="inline-block px-4 py-2 bg-ocean-100 text-ocean-700 rounded-full text-sm font-medium mb-6">
+                Роды в Бразилии под ключ
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-text-primary leading-tight mb-6">
+                {heroContent.title}
+              </h1>
+              <p className="text-lg md:text-xl text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                {heroContent.subtitle}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background gradient */}
