@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("BrazilBaby Site Tests", () => {
+test.describe("Baby Rio Site Tests", () => {
   test.beforeEach(async ({ page }) => {
     // Collect console errors
     page.on("pageerror", (error) => {

@@ -10,9 +10,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Brand palette
+        brand: {
+          deep: "#0E6F7E",    // Ocean Deep (Primary)
+          light: "#26A69A",   // Rio Turquoise (Secondary)
+          green: "#88C46C",   // Life Green (Logo Accent)
+          gold: "#F59E0B",    // Golden Hour (VIP/Stars)
+        },
+        bg: {
+          sand: "#FDFBF7",    // Main Background
+          mist: "#F1F5F9",    // Secondary Section Background
+        },
         // Premium palette
         sand: {
-          50: "#FEFDFB",
+          50: "#FDFBF7",
           100: "#FDF9F3",
           200: "#FAF3E8",
           300: "#F5EBDA",
@@ -25,16 +36,17 @@ const config: Config = {
           200: "#B5E3E8",
           300: "#85CFD8",
           400: "#4DB3C2",
-          500: "#2D9AAD",
-          600: "#257B8C",
+          500: "#0E6F7E",
+          600: "#0E6F7E",
           700: "#1E6372",
           800: "#1A505D",
           900: "#16424D",
         },
         text: {
-          primary: "#2D3748",
+          primary: "#1E293B",
           secondary: "#4A5568",
-          muted: "#718096",
+          muted: "#64748B",
+          main: "#1E293B",
         },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -79,6 +91,9 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+      },
+      backgroundImage: {
+        'brand-gradient': 'linear-gradient(135deg, #0E6F7E 0%, #26A69A 50%, #88C46C 100%)',
       },
       borderRadius: {
         lg: "var(--radius)",

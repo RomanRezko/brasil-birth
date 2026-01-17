@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "BrazilBaby — Роды в Бразилии под ключ | Гражданство для ребенка",
+  title: "Baby Rio — Роды в Бразилии под ключ | Гражданство для ребенка",
   description:
     "Полное сопровождение родов в Бразилии: от встречи в аэропорту до получения паспорта. Гражданство для ребенка, ВНЖ для родителей. Медицина мирового уровня.",
   keywords: [
@@ -19,8 +19,12 @@ export const metadata: Metadata = {
     "родить в Бразилии",
     "роды за границей",
   ],
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/images/favicon-large.png",
+  },
   openGraph: {
-    title: "BrazilBaby — Роды в Бразилии под ключ",
+    title: "Baby Rio — Роды в Бразилии под ключ",
     description:
       "Гражданство Бразилии для вашего ребенка и будущее без границ. Полное сопровождение.",
     type: "website",

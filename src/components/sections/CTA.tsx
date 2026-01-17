@@ -58,7 +58,7 @@ export function CTA() {
                 asChild
               >
                 <a
-                  href="https://t.me/brazilbaby"
+                  href="https://t.me/babyrio"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

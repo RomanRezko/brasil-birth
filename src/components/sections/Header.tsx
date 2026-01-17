@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const navItems = [
   { label: "О нас", href: "#about" },
@@ -36,7 +37,7 @@ export function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
+        isScrolled || isMobileMenuOpen
           ? "bg-white/95 backdrop-blur-md shadow-sm py-3"
           : "bg-transparent py-5"
       )}
@@ -44,9 +45,15 @@ export function Header() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-ocean-600">Brazil</span>
-            <span className="text-2xl font-bold text-text-primary">Baby</span>
+          <a href="#" className="flex items-center">
+            <Image
+              src="/images/logo-babyrio.png"
+              alt="Baby Rio"
+              width={758}
+              height={212}
+              className="h-10 md:h-12 w-auto"
+              priority
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -66,7 +73,7 @@ export function Header() {
           <div className="hidden md:flex items-center gap-2">
             <Button variant="telegram" size="default" asChild>
               <a
-                href="https://t.me/brazilbaby"
+                href="https://t.me/babyrio"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -86,18 +93,36 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-text-primary"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          {/* Mobile Icons + Menu Button */}
+          <div className="md:hidden flex items-center gap-2">
+            <a
+              href="https://t.me/babyrio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-[#0088CC]"
+            >
+              <Send className="w-6 h-6" />
+            </a>
+            <a
+              href="https://wa.me/5521999999999?text=Здравствуйте! Интересуют роды в Бразилии"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-[#25D366]"
+            >
+              <MessageCircle className="w-6 h-6" />
+            </a>
+            <button
+              className="p-2 text-text-primary"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -124,7 +149,7 @@ export function Header() {
                   <div className="flex flex-col gap-2 mt-2">
                     <Button variant="telegram" size="default" asChild>
                       <a
-                        href="https://t.me/brazilbaby"
+                        href="https://t.me/babyrio"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

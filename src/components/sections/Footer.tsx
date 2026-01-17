@@ -23,12 +23,12 @@ const footerLinks = {
 const socialLinks = [
   {
     icon: Instagram,
-    href: "https://instagram.com/brazilbaby",
+    href: "https://instagram.com/babyrio",
     label: "Instagram",
   },
   {
     icon: Send,
-    href: "https://t.me/brazilbaby",
+    href: "https://t.me/babyrio",
     label: "Telegram",
   },
   {
@@ -48,8 +48,8 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <a href="#" className="flex items-center gap-2 mb-4">
-              <span className="text-2xl font-bold text-ocean-400">Brazil</span>
-              <span className="text-2xl font-bold text-white">Baby</span>
+              <span className="text-2xl font-bold text-ocean-400">Baby</span>
+              <span className="text-2xl font-bold text-white">Rio</span>
             </a>
             <p className="text-gray-400 mb-6 text-sm leading-relaxed">
               Профессиональное сопровождение родов в Бразилии.
@@ -128,10 +128,10 @@ export function Footer() {
                 <div>
                   <p className="text-sm text-gray-400">Email</p>
                   <a
-                    href="mailto:info@brazilbaby.com"
+                    href="mailto:info@babyrio.com"
                     className="text-white hover:text-ocean-400 transition-colors"
                   >
-                    info@brazilbaby.com
+                    info@babyrio.com
                   </a>
                 </div>
               </li>
@@ -150,7 +150,7 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm text-center md:text-left">
-              &copy; {currentYear} BrazilBaby. Все права защищены.
+              &copy; {currentYear} Baby Rio. Все права защищены.
             </p>
             <div className="flex gap-6">
               {footerLinks.legal.map((link, index) => (
