@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://babyrio.ru/sitemap.xml
