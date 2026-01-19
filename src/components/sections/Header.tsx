@@ -6,12 +6,14 @@ import { Menu, X, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 
 const navItems = [
-  { label: "О нас", href: "#about" },
-  { label: "Этапы", href: "#roadmap" },
-  { label: "Цены", href: "#pricing" },
-  { label: "Отзывы", href: "#trust" },
+  { label: "О нас", href: "/#about" },
+  { label: "Этапы", href: "/#roadmap" },
+  { label: "Цены", href: "/#pricing" },
+  { label: "Отзывы", href: "/#trust" },
+  { label: "Блог", href: "/blog" },
 ];
 
 export function Header() {
@@ -45,7 +47,7 @@ export function Header() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src="/images/logo-babyrio.png"
               alt="Baby Rio"
@@ -54,19 +56,29 @@ export function Header() {
               className="h-10 md:h-12 w-auto"
               priority
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-text-secondary hover:text-ocean-600 transition-colors font-medium"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.href.includes("#") ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-text-secondary hover:text-ocean-600 transition-colors font-medium"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-text-secondary hover:text-ocean-600 transition-colors font-medium"
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* CTA Buttons */}
@@ -136,16 +148,27 @@ export function Header() {
                 className="md:hidden overflow-hidden"
               >
                 <nav className="flex flex-col gap-4 pt-6 pb-4">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      className="text-text-secondary hover:text-ocean-600 transition-colors font-medium py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
+                  {navItems.map((item) =>
+                    item.href.includes("#") ? (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        className="text-text-secondary hover:text-ocean-600 transition-colors font-medium py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="text-text-secondary hover:text-ocean-600 transition-colors font-medium py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    )
+                  )}
                   <div className="flex flex-col gap-2 mt-2">
                     <Button variant="telegram" size="default" asChild>
                       <a

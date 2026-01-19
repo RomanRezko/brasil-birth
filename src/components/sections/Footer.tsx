@@ -1,18 +1,20 @@
 "use client";
 
+import Link from "next/link";
 import { Instagram, Send, MessageCircle, Mail, MapPin } from "lucide-react";
 
 const footerLinks = {
   services: [
-    { label: "Пакет «Базовый»", href: "#pricing" },
-    { label: "Пакет «Комфорт»", href: "#pricing" },
-    { label: "Пакет «VIP»", href: "#pricing" },
+    { label: "Пакет «Базовый»", href: "/#pricing" },
+    { label: "Пакет «Комфорт»", href: "/#pricing" },
+    { label: "Пакет «VIP»", href: "/#pricing" },
   ],
   company: [
-    { label: "О нас", href: "#about" },
-    { label: "Этапы работы", href: "#roadmap" },
-    { label: "Отзывы", href: "#trust" },
-    { label: "FAQ", href: "#faq" },
+    { label: "О нас", href: "/#about" },
+    { label: "Этапы работы", href: "/#roadmap" },
+    { label: "Отзывы", href: "/#trust" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Блог", href: "/blog" },
   ],
   legal: [
     { label: "Политика конфиденциальности", href: "#" },
@@ -47,10 +49,10 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <a href="#" className="flex items-center gap-2 mb-4">
+            <Link href="/" className="flex items-center gap-2 mb-4">
               <span className="text-2xl font-bold text-ocean-400">Baby</span>
               <span className="text-2xl font-bold text-white">Rio</span>
-            </a>
+            </Link>
             <p className="text-gray-400 mb-6 text-sm leading-relaxed">
               Профессиональное сопровождение родов в Бразилии.
               Помогаем семьям получить гражданство и новые возможности.
@@ -96,12 +98,21 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-ocean-400 transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.includes("#") ? (
+                    <a
+                      href={link.href}
+                      className="text-gray-400 hover:text-ocean-400 transition-colors text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-gray-400 hover:text-ocean-400 transition-colors text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

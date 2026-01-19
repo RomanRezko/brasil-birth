@@ -37,9 +37,6 @@ export function Location() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-10"
         >
-          <span className="inline-block px-4 py-2 bg-ocean-100 text-ocean-700 rounded-full text-sm font-medium mb-4">
-            Проживание
-          </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-6">
             Барра-да-Тижука: Ваша безопасная гавань в Рио
           </h2>
