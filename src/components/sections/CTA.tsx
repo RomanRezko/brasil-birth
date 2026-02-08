@@ -18,7 +18,7 @@ export function CTA() {
     // Form submission logic would go here
     const message = `Здравствуйте! Меня зовут ${formData.name}. Интересуют роды в Бразилии. Телефон: ${formData.phone}. Предполагаемая дата родов: ${formData.dueDate}`;
     window.open(
-      `https://wa.me/5521999999999?text=${encodeURIComponent(message)}`,
+      `https://wa.me/375336056094?text=${encodeURIComponent(message)}`,
       "_blank"
     );
   };
@@ -41,15 +41,22 @@ export function CTA() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Остались вопросы?
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Гражданство Бразилии
               <br />
-              <span className="text-sand-200">Получите бесплатную консультацию</span>
+              <span className="text-sand-200">для вашего ребёнка</span>
             </h2>
-            <p className="text-lg text-ocean-100 mb-8">
-              Заполните форму, и мы свяжемся с вами в течение 24 часов.
-              Расскажем подробнее о процессе и подготовим индивидуальную смету расходов.
+            <p className="text-lg text-ocean-100 mb-6">
+              Полное сопровождение родов под ключ. Оставьте заявку — расскажем подробности и рассчитаем бюджет.
             </p>
+            <ul className="space-y-2 mb-8">
+              {["Паспорт ребёнку за 2 недели", "ВНЖ родителям сразу", "170+ стран без виз"].map((item, i) => (
+                <li key={i} className="flex items-center gap-2 text-ocean-100">
+                  <span className="w-5 h-5 bg-ocean-400 rounded-full flex items-center justify-center text-xs text-white">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -58,7 +65,7 @@ export function CTA() {
                 asChild
               >
                 <a
-                  href="https://t.me/babyrio"
+                  href="https://t.me/BabyRioBot"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -72,7 +79,7 @@ export function CTA() {
                 asChild
               >
                 <a
-                  href="https://wa.me/5521999999999?text=Здравствуйте! Интересуют роды в Бразилии"
+                  href="https://wa.me/375336056094?text=Здравствуйте! Интересуют роды в Бразилии"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

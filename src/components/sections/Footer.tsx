@@ -25,17 +25,17 @@ const footerLinks = {
 const socialLinks = [
   {
     icon: Instagram,
-    href: "https://instagram.com/babyrio",
+    href: "https://www.instagram.com/babyrio_brazil",
     label: "Instagram",
   },
   {
     icon: Send,
-    href: "https://t.me/babyrio",
+    href: "https://t.me/BabyRioBot",
     label: "Telegram",
   },
   {
     icon: MessageCircle,
-    href: "https://wa.me/5521999999999",
+    href: "https://wa.me/375336056094",
     label: "WhatsApp",
   },
 ];
@@ -45,8 +45,91 @@ export function Footer() {
 
   return (
     <footer className="bg-text-primary text-white">
-      <div className="container mx-auto px-4 max-w-7xl py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container mx-auto px-4 max-w-7xl py-8 md:py-16">
+        {/* Mobile: Compact layout */}
+        <div className="md:hidden">
+          {/* Brand + Social */}
+          <div className="text-center mb-6">
+            <Link href="/" className="inline-flex items-center gap-2 mb-3">
+              <span className="text-xl font-bold text-ocean-400">Baby</span>
+              <span className="text-xl font-bold text-white">Rio</span>
+            </Link>
+            <p className="text-gray-400 text-sm mb-4">
+              Профессиональное сопровождение родов в Бразилии
+            </p>
+            <div className="flex justify-center gap-3">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-ocean-600 transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Links in 2 columns */}
+          <div className="grid grid-cols-2 gap-6 mb-6">
+            <div>
+              <h4 className="font-semibold mb-2 text-white text-sm">Услуги</h4>
+              <ul className="space-y-1.5">
+                {footerLinks.services.map((link, index) => (
+                  <li key={index}>
+                    <a
+                      href={link.href}
+                      className="text-gray-400 hover:text-ocean-400 transition-colors text-xs"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-2 text-white text-sm">Компания</h4>
+              <ul className="space-y-1.5">
+                {footerLinks.company.map((link, index) => (
+                  <li key={index}>
+                    {link.href.includes("#") ? (
+                      <a
+                        href={link.href}
+                        className="text-gray-400 hover:text-ocean-400 transition-colors text-xs"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-gray-400 hover:text-ocean-400 transition-colors text-xs"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Contact row */}
+          <div className="flex justify-center gap-4 text-xs text-gray-400 mb-6">
+            <a href="https://wa.me/375336056094" className="hover:text-ocean-400">
+              +55 21 99999-9999
+            </a>
+            <span>•</span>
+            <a href="mailto:info@babyrio.com" className="hover:text-ocean-400">
+              info@babyrio.com
+            </a>
+          </div>
+        </div>
+
+        {/* Desktop: Full layout */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
@@ -57,8 +140,6 @@ export function Footer() {
               Профессиональное сопровождение родов в Бразилии.
               Помогаем семьям получить гражданство и новые возможности.
             </p>
-
-            {/* Social links */}
             <div className="flex gap-3">
               {socialLinks.map((social, index) => (
                 <a
@@ -127,7 +208,7 @@ export function Footer() {
                 <div>
                   <p className="text-sm text-gray-400">WhatsApp</p>
                   <a
-                    href="https://wa.me/5521999999999"
+                    href="https://wa.me/375336056094"
                     className="text-white hover:text-ocean-400 transition-colors"
                   >
                     +55 21 99999-9999
@@ -158,17 +239,17 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm text-center md:text-left">
+        <div className="border-t border-gray-800 mt-6 md:mt-12 pt-4 md:pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4">
+            <p className="text-gray-500 text-xs md:text-sm text-center md:text-left">
               &copy; {currentYear} Baby Rio. Все права защищены.
             </p>
-            <div className="flex gap-6">
+            <div className="flex gap-4 md:gap-6">
               {footerLinks.legal.map((link, index) => (
                 <a
                   key={index}
                   href={link.href}
-                  className="text-gray-500 hover:text-gray-400 transition-colors text-sm"
+                  className="text-gray-500 hover:text-gray-400 transition-colors text-xs md:text-sm"
                 >
                   {link.label}
                 </a>

@@ -1,6 +1,7 @@
 import {
   Header,
   Hero,
+  Problems,
   Features,
   Roadmap,
   Pricing,
@@ -19,6 +20,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Problems />
         <Features />
         <Roadmap />
         <Pricing />

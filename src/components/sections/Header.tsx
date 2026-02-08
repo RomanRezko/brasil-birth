@@ -85,7 +85,7 @@ export function Header() {
           <div className="hidden md:flex items-center gap-2">
             <Button variant="telegram" size="default" asChild>
               <a
-                href="https://t.me/babyrio"
+                href="https://t.me/BabyRioBot"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -95,7 +95,7 @@ export function Header() {
             </Button>
             <Button variant="whatsapp" size="default" asChild>
               <a
-                href="https://wa.me/5521999999999?text=Здравствуйте! Интересуют роды в Бразилии"
+                href="https://wa.me/375336056094?text=Здравствуйте! Интересуют роды в Бразилии"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -108,7 +108,7 @@ export function Header() {
           {/* Mobile Icons + Menu Button */}
           <div className="md:hidden flex items-center gap-2">
             <a
-              href="https://t.me/babyrio"
+              href="https://t.me/BabyRioBot"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-[#0088CC]"
@@ -116,7 +116,7 @@ export function Header() {
               <Send className="w-6 h-6" />
             </a>
             <a
-              href="https://wa.me/5521999999999?text=Здравствуйте! Интересуют роды в Бразилии"
+              href="https://wa.me/375336056094?text=Здравствуйте! Интересуют роды в Бразилии"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-[#25D366]"
@@ -172,7 +172,7 @@ export function Header() {
                   <div className="flex flex-col gap-2 mt-2">
                     <Button variant="telegram" size="default" asChild>
                       <a
-                        href="https://t.me/babyrio"
+                        href="https://t.me/BabyRioBot"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -182,7 +182,7 @@ export function Header() {
                     </Button>
                     <Button variant="whatsapp" size="default" asChild>
                       <a
-                        href="https://wa.me/5521999999999?text=Здравствуйте! Интересуют роды в Бразилии"
+                        href="https://wa.me/375336056094?text=Здравствуйте! Интересуют роды в Бразилии"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

@@ -46,12 +46,10 @@ export function Features() {
           className="text-center max-w-3xl mx-auto mb-10"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-6">
-            Почему семьи выбирают Бразилию?
+            Почему именно Бразилия?
           </h2>
           <p className="text-lg text-text-secondary">
-            Бразилия — одна из немногих стран, где действует право почвы.
-            Ребенок, родившийся на территории страны, автоматически получает
-            гражданство.
+            Право почвы, сильный паспорт и медицина мирового уровня — всё, что нужно для будущего вашего ребёнка
           </p>
         </motion.div>
 

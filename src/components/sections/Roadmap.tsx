@@ -129,16 +129,17 @@ export function Roadmap() {
             {/* Background line */}
             <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-ocean-500 via-coral-500 to-amber-500 -translate-y-1/2 rounded-full" />
 
-            {/* Step numbers on line */}
-            <div className="relative flex justify-between">
+            {/* Step numbers on line - use grid to center above cards */}
+            <div className="relative grid grid-cols-5 gap-4">
               {steps.map((step, index) => {
                 const colors = colorClasses[step.color] || colorClasses.ocean;
                 return (
-                  <div
-                    key={index}
-                    className={`w-14 h-14 ${colors.bg} rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg ring-4 ring-white relative z-10`}
-                  >
-                    {step.number}
+                  <div key={index} className="flex justify-center">
+                    <div
+                      className={`w-14 h-14 ${colors.bg} rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg ring-4 ring-white relative z-10`}
+                    >
+                      {step.number}
+                    </div>
                   </div>
                 );
               })}
@@ -196,9 +197,9 @@ export function Roadmap() {
                 const colors = colorClasses[step.color] || colorClasses.ocean;
                 return (
                   <div key={index} className="relative">
-                    {/* Step number circle */}
+                    {/* Step number circle - centered vertically */}
                     <div
-                      className={`absolute -left-14 md:-left-16 top-4 w-10 h-10 md:w-12 md:h-12 ${colors.bg} rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-lg ring-4 ring-white z-10`}
+                      className={`absolute -left-14 md:-left-16 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 ${colors.bg} rounded-full flex items-center justify-center text-white font-bold text-sm md:text-base shadow-lg ring-4 ring-white z-10`}
                     >
                       {step.number}
                     </div>

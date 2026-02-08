@@ -35,13 +35,13 @@ export function LeadMagnet() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <Button size="lg" className="gap-2" asChild>
-                  <a href="#contact">
+                  <a href="/baby-rio-guide.pdf" download>
                     <Download className="w-5 h-5" />
                     Скачать чек-лист
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <a href="https://t.me/babyrio" target="_blank" rel="noopener noreferrer">
+                  <a href="https://t.me/BabyRioBot" target="_blank" rel="noopener noreferrer">
                     Задать вопрос в Telegram
                   </a>
                 </Button>

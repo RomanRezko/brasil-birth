@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Calendar, Clock, User, MessageCircle } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, User, MessageCircle, Send } from "lucide-react";
 import { getAllBlogPosts, getBlogPostBySlug } from "@/data/blog-posts";
 import { Button } from "@/components/ui/button";
 import { Header, Footer } from "@/components/sections";
@@ -124,23 +124,39 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             Понравилась статья?
           </h3>
           <p className="text-white/90 mb-6 max-w-lg mx-auto">
-            Напишите нам в WhatsApp — ответим на все вопросы о родах в Бразилии
+            Напишите нам — ответим на все вопросы о родах в Бразилии
             и поможем спланировать вашу поездку.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-[#25D366] hover:bg-[#20BD5A] text-white"
-          >
-            <a
-              href="https://wa.me/5521999999999?text=Здравствуйте! Прочитал статью на сайте и хочу узнать больше о родах в Бразилии"
-              target="_blank"
-              rel="noopener noreferrer"
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#0088CC] hover:bg-[#0077B5] text-white"
             >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Написать в WhatsApp
-            </a>
-          </Button>
+              <a
+                href="https://t.me/BabyRioBot"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Send className="w-5 h-5 mr-2" />
+                Telegram
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#25D366] hover:bg-[#20BD5A] text-white"
+            >
+              <a
+                href="https://wa.me/375336056094?text=Здравствуйте! Прочитал статью на сайте и хочу узнать больше о родах в Бразилии"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                WhatsApp
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
     </main>
